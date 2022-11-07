@@ -14,7 +14,7 @@ interface Artist {
 interface Album {
 	album_type: string;
 	artists: Artist[];
-	available_markets: string[];
+	available_markets?: string[];
 	external_urls: { spotify: string };
 	href: string;
 	id: string;
@@ -31,7 +31,7 @@ interface Song {
 	album: Album;
 	analysis_url: string;
 	artists: Artist[];
-	available_markets: string[];
+	available_markets?: string[];
 	danceability: number;
 	disc_number: number;
 	duration_ms: number;
@@ -49,7 +49,7 @@ interface Song {
 	mode: number;
 	name: string;
 	popularity: number;
-	preview_url: string;
+	preview_url?: string;
 	speechiness: number;
 	tempo: number;
 	time_signature: number;
@@ -60,7 +60,7 @@ interface Song {
 	valence: number;
 }
 
-export const songs: Song[] = {
+export const songs: { [keyName: string]: Song } = {
 	'6': {
 		acousticness: 3.61e-4,
 		album: {
@@ -130052,6 +130052,5 @@ export const songs: Song[] = {
 		type: 'audio_features',
 		uri: 'spotify:track:15JHH5FBawCL7DmCcUxlUp',
 		valence: 0.592
-	},
-	placeholder: 0
+	}
 };

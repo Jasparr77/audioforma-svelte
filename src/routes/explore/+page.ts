@@ -1,19 +1,19 @@
-import { writable } from 'svelte/store';
-import { json } from '@sveltejs/kit';
+// import { writable } from 'svelte/store';
+// import { json } from '@sveltejs/kit';
 
-export async function load({ fetch }) {
-	console.log('...loading Songs');
+// export async function load({ fetch }) {
+// 	console.log('...loading Songs');
 
-	const songs = writable({});
+// 	const songs = writable({});
 
-	const songFetch = json(
-		await fetch('https://audioforma.firebaseio.com/publicTrackData.json', {
-			method: 'GET'
-		})
-	);
+// 	const songFetch = json(
+// 		await fetch('https://audioforma.firebaseio.com/publicTrackData.json', {
+// 			method: 'GET'
+// 		})
+// 	);
 
-	if (songFetch.status === 200) {
-		songs.set(songFetch.json);
-		return songs;
-	}
-}
+// 	if (songFetch.status === 200) {
+// 		songs.set(songFetch.json);
+// 		return songs;
+// 	}
+// }

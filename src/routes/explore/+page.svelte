@@ -54,45 +54,40 @@ const labels= [
 ]
 
 SC.onFrame(()=>{
-  if (xRangeDenominator < 5 && !showXRange)
+  if (xRangeDenominator < 50 && !showXRange)
   {xRangeDenominator += .1}
   if (xRangeDenominator > 1 && showXRange){
     xRangeDenominator -= .1
   } 
-  if (yRangeDenominator < 5 && !showYRange)
+  if (yRangeDenominator < 50 && !showYRange)
   {yRangeDenominator += .1}
   if (yRangeDenominator > 1 && showYRange){
     yRangeDenominator -= .1
   } 
-  if (zRangeDenominator < 5 && !showZRange)
+  if (zRangeDenominator < 50 && !showZRange)
   {zRangeDenominator += .1}
   if (zRangeDenominator > 1 && showZRange){
     zRangeDenominator -= .1
-  } 
-  if (rRangeDenominator < 5 && !showRRange)
-  {rRangeDenominator += .1}
-  if (rRangeDenominator > 1 && showRRange){
-    rRangeDenominator -= .1
   } 
 })
 
 
 </script>
 
-
+<div class="canvasHolder">
 <SC.Canvas antialias background={new THREE.Color('papayawhip')} shadows>
   <SC.Primitive
-    object={new THREE.GridHelper(10, 10, 0x444444, 0xaaaaaa)}
+    object={new THREE.GridHelper(10, 10, 0x444444, 0xCCCCCC)}
     position={[0, yScale(.5), 0]}
     rotation={[-Math.PI/2, 0,0]}
     />
     <SC.Primitive
-    object={new THREE.GridHelper(10, 10, 0x444444, 0xaaaaaa)}
+    object={new THREE.GridHelper(10, 10, 0x444444, 0xCCCCCC)}
     position={[xScale(.5), 0, 0]}
     rotation={[0,0,-Math.PI/2]}
   />
   <SC.Primitive
-    object={new THREE.GridHelper(10, 10, 0x444444, 0xaaaaaa)}
+    object={new THREE.GridHelper(10, 10, 0x444444, 0xCCCCCC)}
     position={[0, 0, zScale(.5)]}
   />
   <!-- <SC.Primitive 
@@ -113,7 +108,7 @@ SC.onFrame(()=>{
   {/each}
   {#each labels as label}
   <SC.Mesh 
-    geometry={new THREE.SphereGeometry(1,32,16)}
+    geometry={new THREE.SphereGeometry(.05,32,16)}
     position={label.coords}
   />
   {/each}
@@ -136,9 +131,13 @@ SC.onFrame(()=>{
   <h2>Sad, Lazy & Energetic: {sadNoRhythmCrazy.length} songs</h2>
   <h2>Sad, Lazy & Calm: {sadNoRhythmCalm.length} songs</h2>
 </div>
+</div>
   
   <style>
   	.controls {
   		position: absolute;
   	}
+    .canvasHolder {
+      position: inherit;
+    }
   </style>
